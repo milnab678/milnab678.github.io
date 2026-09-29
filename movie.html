@@ -2,51 +2,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Archive</title>
+    <title>Movie</title>
 
     <style>
         body {
             margin: 0;
             height: 100vh;
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* ARCHIVE 위치 */
-        .archive-title {
-            position: absolute;
-            left: 300px;
-            top: 200px;
-        }
-
-        /* 설명글 위치 */
-        .archive-text {
-            position: absolute;
-            left: 305px;
-            top: 270px;
-        }
-
-        /* MOVIE 위치 */
-        .movie-link {
-            position: absolute;
-            left: 600px;
-            top: 400px;
-
-            font-size: 30px;
-            color: black;
-            text-decoration: none;
+        #movie-image {
+            width: 500px;
+            height: 350px;
+            object-fit: cover;
         }
     </style>
-
 </head>
+
 <body>
 
-    <h1 class="archive-title">ARCHIVE</h1>
+    <img id="movie-image" src="movie1.jpg">
 
-    <p class="archive-text">여기는 아카이빙 페이지입니다.</p>
+    <script>
+        const images = [
+            "movie1.jpg",
+            "movie2.jpg",
+            "movie3.jpg",
+            "movie4.jpg",
+            "movie5.jpg"
+        ];
 
-    <a href="movie.html" class="movie-link">MOVIE</a>
+        const movieImage = document.getElementById("movie-image");
+
+        let playing = true;
+
+        function changeImage() {
+            if (!playing) return;
+
+            const randomImage =
+                images[Math.floor(Math.random() * images.length)];
+
+            movieImage.src = randomImage;
+        }
+
+        setInterval(changeImage, 80);
+
+        document.body.addEventListener("click", function() {
+            playing = !playing;
+        });
+    </script>
 
 </body>
 </html>
 ```
-
