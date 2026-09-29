@@ -1,0 +1,59 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #movie-image {
+            width: 500px;
+            height: 350px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img id="movie-image" src="movie1.jpg">
+
+    <script>
+        const images = [
+            "movie1.jpg",
+            "movie2.jpg",
+            "movie3.jpg",
+            "movie4.jpg",
+            "movie5.jpg"
+        ];
+
+        const movieImage = document.getElementById("movie-image");
+
+        let playing = true;
+
+        function changeImage() {
+            if (!playing) return;
+
+            const randomImage =
+                images[Math.floor(Math.random() * images.length)];
+
+            movieImage.src = randomImage;
+        }
+
+        setInterval(changeImage, 80);
+
+        document.body.addEventListener("click", function() {
+            playing = !playing;
+        });
+    </script>
+
+</body>
+</html>
+```
