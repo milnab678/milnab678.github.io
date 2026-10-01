@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tea</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        #tea-container {
+            position: relative;
+            width: 700px;
+        }
+
+        /* 빈 컵이 들어있는 전체 이미지 */
+        #background {
+            width: 100%;
+            display: block;
+        }
+
+        /* 녹차 */
+        #tea {
+            position: absolute;
+
+            /*
+            이 숫자들은 나중에 실제 화면을 보면서
+            녹차 위치를 맞출 거야.
+            */
+            width: 42%;
+            left: 11%;
+            top: 10%;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.5s ease,
+                clip-path 0.8s ease;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 18px;
+            font-size: 16px;
+            background: white;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tea-container">
+
+        <!-- 빈 컵 + 아이메시지 전체 -->
+        <img
+            id="background"
+            src="tea-background.png"
+        >
+
+        <!-- 녹차 -->
+        <img
+            id="tea"
+            src="tea.png"
+        >
+
+    </div>
+
+    <div class="buttons">
+        <button onclick="drinkTea()">마시기</button>
+        <button onclick="pourTea()">따르기</button>
+    </div>
+
+
+    <script>
+
+        const tea = document.getElementById("tea");
+
+        function drinkTea() {
+
+            // 녹차가 아래쪽부터 사라지는 효과
+            tea.style.clipPath = "inset(45% 0 0 0)";
+            tea.style.opacity = "0";
+        }
+
+        function pourTea() {
+
+            // 다시 녹차가 나타남
+            tea.style.clipPath = "inset(0 0 0 0)";
+            tea.style.opacity = "1";
+        }
+
+    </script>
+
+</body>
+</html>
