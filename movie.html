@@ -13,41 +13,71 @@
             align-items: center;
         }
 
+        #movie-container {
+            text-align: center;
+        }
+
         #movie-image {
             width: 500px;
             height: 350px;
             object-fit: cover;
+            display: block;
+        }
+
+        #movie-title {
+            margin-top: 10px;
+            font-size: 18px;
         }
     </style>
 </head>
 
 <body>
 
-    <img id="movie-image" src="movie1.jpg">
+    <div id="movie-container">
+        <img id="movie-image" src="movie1.jpg">
+        <div id="movie-title">Amelie</div>
+    </div>
 
     <script>
-        const images = [
-            "movie1.jpg",
-            "movie2.jpg",
-            "movie3.jpg",
-            "movie4.jpg",
-            "movie5.jpg"
+        const movies = [
+            {
+                image: "movie1.jpg",
+                title: "Amelie"
+            },
+            {
+                image: "movie2.jpg",
+                title: "Leon : The Professional"
+            },
+            {
+                image: "movie3.jpg",
+                title: "The Science of Sleep"
+            },
+            {
+                image: "movie4.jpg",
+                title: "Inherent Vice"
+            },
+            {
+                image: "movie5.jpg",
+                title: "The Lovers on the Bridge"
+            }
         ];
 
         const movieImage = document.getElementById("movie-image");
+        const movieTitle = document.getElementById("movie-title");
 
         let playing = true;
 
-        function changeImage() {
+        function changeMovie() {
             if (!playing) return;
 
-            const randomImage =
-                images[Math.floor(Math.random() * images.length)];
+            const randomMovie =
+                movies[Math.floor(Math.random() * movies.length)];
 
-            movieImage.src = randomImage;
+            movieImage.src = randomMovie.image;
+            movieTitle.textContent = randomMovie.title;
         }
 
-        setInterval(changeImage, 80);
+        setInterval(changeMovie, 80);
 
         document.body.addEventListener("click", function() {
             playing = !playing;
