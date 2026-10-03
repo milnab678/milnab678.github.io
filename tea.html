@@ -37,9 +37,8 @@
 
             pointer-events: none;
 
-            transition:
-                opacity 1s ease,
-                clip-path 1.5s ease;
+            /* 1초 동안 천천히 투명해졌다가 나타남 */
+            transition: opacity 1s ease;
         }
 
         .buttons {
@@ -87,16 +86,12 @@
         const tea = document.getElementById("tea");
 
         function drinkTea() {
-
-            // 녹차가 아래쪽부터 사라지는 효과
-            tea.style.clipPath = "inset(45% 0 0 0)";
+            // 1초 동안 녹차가 서서히 사라짐
             tea.style.opacity = "0";
         }
 
         function pourTea() {
-
-            // 다시 녹차가 나타남
-            tea.style.clipPath = "inset(0 0 0 0)";
+            // 1초 동안 녹차가 서서히 나타남
             tea.style.opacity = "1";
         }
 
